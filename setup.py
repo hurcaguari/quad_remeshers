@@ -21,6 +21,10 @@ def getQREngineFolder():
 def InstallQuadRemesherEngine() -> int:
     engineFolder = getQREngineFolder()
     if not os.path.exists(engineFolder):
+        parent_path = os.path.dirname(engineFolder)
+        if not os.path.exists(parent_path):
+            os.makedirs(parent_path)
+        print(engineFolder)
         dow_QREngine_path = "https://hurcaguari.top/blender/data/QuadRemesherEngine_1.3_win.zip"
         zip_file_name = os.path.join(engineFolder, "../install_engine.zip")
         import urllib.request
